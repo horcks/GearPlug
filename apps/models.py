@@ -1,3 +1,4 @@
+from distutils import text_file
 from django.db import models
 from django.forms import CharField
 
@@ -7,6 +8,14 @@ class planeta(models.Model):
     def __str__(self):
         return '{}'.format(self.nombre)
 
+
+class pelicula(models.Model):
+    titulo = models.CharField(max_length=100)
+    texto_apertura = models.TextField()
+    planetas = models.ManyToManyField(planeta)
+
+    def __str__(self):
+        return '{}'.format(self.nombre)
 class actor(models.Model):    
     nombre = models.CharField(max_length=50)
     altura = models.IntegerField()
