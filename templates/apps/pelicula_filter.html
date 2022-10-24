@@ -1,0 +1,19 @@
+{% extends "layouts/master.html" %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center m-2">
+        <form method="get">
+            {{ filter.form.titulo }}
+            <input type="submit" />
+        </form>
+    </div>
+    <div class="row  d-flex justify-content-center m-2 border-bottom">
+        {% for obj in filter.qs %}
+            titulo : {{obj.titulo}}<br>
+            texto_apertura : {{obj.texto_apertura|safe}}<br>
+            director : {{obj.director}}<br>
+            productor : {{obj.productor}}<br>
+            planetas : {{obj.planetas.all|join:", "}}<br>
+        {% endfor %}
+</div>
+{% endblock %}

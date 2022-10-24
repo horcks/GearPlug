@@ -1,0 +1,25 @@
+{% extends "layouts/master.html" %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center m-2">
+        <form method="get">
+            {{ filter.form.nombre }}
+            <input type="submit" />
+        </form>
+    </div>
+    <div class="row  d-flex justify-content-center m-2 border-bottom">
+        {% for obj in filter.qs %}
+            nombre : {{obj.nombre}} <br>
+            altura : {{obj.altura}} <br>
+            masa : {{obj.masa}} <br>
+            color_pelo : {{obj.color_pelo}} <br>
+            color_piel : {{obj.color_piel}} <br>
+            color_ojos : {{obj.color_ojos}} <br>
+            año_nacimiento : {{obj.año_nacimiento}} <br>
+            género : {{obj.genero}} <br>
+            mundo_natal : {{obj.mundo_natal}} <br>
+            peliculas_participa : {{obj.peliculas_participa.all|join:", "}} <br>
+        
+        {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layouts/master.html" %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center m-2">
+        <form method="get">
+            {{ filter.form.nombre }}
+            <input type="submit" />
+        </form>
+    </div>
+    <div class="row  d-flex justify-content-center m-2">
+        {% for obj in filter.qs %}
+            nombre : {{obj.nombre}} <br>       
+        {% endfor %}
+</div>
+{% endblock %}
