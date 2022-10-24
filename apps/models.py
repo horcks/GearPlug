@@ -8,15 +8,17 @@ class planeta(models.Model):
     def __str__(self):
         return '{}'.format(self.nombre)
 
-
 class pelicula(models.Model):
     titulo = models.CharField(max_length=100)
     texto_apertura = models.TextField()
+    director = models.CharField(max_length=100)
+    productor = models.CharField(max_length=100)
     planetas = models.ManyToManyField(planeta)
 
     def __str__(self):
-        return '{}'.format(self.nombre)
-class actor(models.Model):    
+        return '{}'.format(self.titulo)
+
+class personaje(models.Model):    
     nombre = models.CharField(max_length=50)
     altura = models.IntegerField()
     masa = models.IntegerField()
@@ -26,4 +28,4 @@ class actor(models.Model):
     año_nacimiento = models.IntegerField()
     género = models.CharField(max_length=50)
     mundo_natal = models.ForeignKey(planeta, verbose_name=("mundo_natal"), on_delete=models.CASCADE)
-    #peliculas_participa = models.ManyToManyField(planeta, verbose_name=("peliculas"))
+    peliculas_participa = models.ManyToManyField(pelicula, verbose_name=("peliculas"))
